@@ -6,7 +6,7 @@ from kivymd.app import MDApp
 
 class MainApp(MDApp):
     def get_stylesheets(self):
-        
+        glob
 
     def load_stylesheets(self):
         for f in glob(self.get_stylesheets()):

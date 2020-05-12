@@ -1,16 +1,40 @@
+import os
+import sys
+import traceback
+
+from libs.core import factory
+from libs.core import utils
+
+os.chdir(utils.get_base_path())
+
+try:
+    import kivy
+    kivy.require('1.9.2')
+
+    from kivy.config import Config
+    Config.set('kivy', 'keyboard_mode', 'system')
+    Config.set('kivy', 'exit_on_escape', "0")
+    Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
+
+except Exception:
+    traceback.print_exc()
+    sys.exit(1)
 
 
-from glob import glob
-from kivy.lang import Builder
-from kivymd.app import MDApp
+def main():
+    factory.registers()
+    app = None
+    try:
+        from ${nama_program} import MainApp
+        app = MainApp()
+        app.run()
 
-class MainApp(MDApp):
-    def get_stylesheets(self):
-        glob
+    except Exception:
+        traceback.print_exc()
+        if app is not None:
+            app.stop()
 
-    def load_stylesheets(self):
-        for f in glob(self.get_stylesheets()):
-            Builder.load_file(f)
+        sys.exit(1)
 
-    def build(self):
-        
+if __name__ in ('__main__', '__android__'):
+    main()

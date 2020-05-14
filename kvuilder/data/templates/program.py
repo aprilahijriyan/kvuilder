@@ -47,7 +47,7 @@ class MainApp(MDApp):
         pass
 
     def get_screen(self):
-        pass
+        raise NotImplementedError
 
     def build(self):
         screen = self.get_screen()
@@ -55,4 +55,4 @@ class MainApp(MDApp):
         return self.screen_manager
 
     def on_request_close(self, *args):
-        pass
+        return True

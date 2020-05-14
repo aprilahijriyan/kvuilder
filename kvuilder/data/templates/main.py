@@ -34,7 +34,7 @@ def main():
         if app is not None:
             app.stop()
 
-        sys.exit(1)
+    sys.exit(1)
 
 if __name__ in ('__main__', '__android__'):
     main()

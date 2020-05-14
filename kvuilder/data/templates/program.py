@@ -9,16 +9,15 @@ from kivymd.app import MDApp
 class MainApp(MDApp):
     def __init__(self, **kwds):
         super().__init__(**kwds)
-        self.screen_manager = ScreenManager()
         Window.bind(
             on_request_close=self.on_request_close
         )
         Window.softinput_mode = 'below_target'
+        self.screen_manager = ScreenManager()
 
     def get_stylesheets(self):
-        base = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(base, "libs", "stylesheet")
-        stylesheets = glob(path + '/**/*.kv')
+        path = os.path.join("libs", "stylesheet", "**/*.kv")
+        stylesheets = glob(path)
         return stylesheets
 
     def load_stylesheets(self):
@@ -27,12 +26,22 @@ class MainApp(MDApp):
 
     def get_wizard_screen(self):
         from libs.screens.wizard.view import WizardScreen
-        from libs.components.wizard import 
+        from libs.components.wizard import MDSwiperPagination
         
         screen = WizardScreen()
+        wizard_manager = screen.ids.wizard_manager
+        paginator = MDSwiperPagination()
+        paginator.screens = wizard_manager.screen_names
+        paginator.manager = wizard_manager
+        wizard_manager.paginator = paginator
+        screen.add_widget(paginator)
+        return screen
 
     def get_login_screen(self):
-        pass
+        from libs.screens.login.view import LoginScreen
+
+        screen = LoginScreen()
+        return screen
 
     def get_main_screen(self):
         pass

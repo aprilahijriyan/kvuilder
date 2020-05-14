@@ -44,13 +44,10 @@ class MainApp(MDApp):
         return screen
 
     def get_main_screen(self):
-        from libs.screens.main.view import MainScreen
-
-        screen = MainScreen()
-        return screen
+        pass
 
     def get_screen(self):
-        raise NotImplementedError
+        pass
 
     def build(self):
         screen = self.get_screen()
@@ -58,8 +55,4 @@ class MainApp(MDApp):
         return self.screen_manager
 
     def on_request_close(self, *args):
-        """
-        Handle on exit.
-        """
-
-        return True
+        pass

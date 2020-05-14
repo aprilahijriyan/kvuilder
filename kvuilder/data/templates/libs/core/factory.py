@@ -1,7 +1,10 @@
+import json
 from kivy.factory import Factory
 
-def registers():
+def init_factory():
     r = Factory.register
-    r("ThreeLineAvatarIconListItem", module="libs.components.wizard")
-    r("MDSwiperManager", module="libs.components.wizard")
-    r("MDSwiperPagination", module="libs.components.wizard")
+    with open("components.json") as fp:
+        components = json.load(fp)
+        for module, classes in components.items():
+            for cls in classes:
+                r(cls, module=module)

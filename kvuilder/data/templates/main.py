@@ -2,10 +2,9 @@ import os
 import sys
 import traceback
 
-from libs.core import factory
-from libs.core import utils
+from libs.core.setup import init
 
-os.chdir(utils.get_base_path())
+init()
 
 try:
     import kivy
@@ -22,7 +21,10 @@ except Exception:
 
 
 def main():
-    factory.registers()
+    '''
+    Fungsi utama untuk menjalankan kivy application
+    '''
+    
     app = None
     try:
         from ${nama_program} import MainApp

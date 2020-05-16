@@ -57,6 +57,14 @@ def create_screen(name):
     click.echo("Membuat screen %r ..." % name)
     tmpl = pkg_resources.resource_filename("kvuilder", "data/screen")
     shutil.copytree(tmpl, dst)
+    view_py = os.path.join(dst, 'view.py')
+    with open(view_py) as fp:
+        t_view = string.Template(fp.read())
+        view_data = t_view.safe_substitute(nama_screen=name.capitalize())
+
+    with open(view_py, "w") fp:
+        fp.write(view_data)
+
     dst = os.path.join("libs", "stylesheet", name)
     if not os.path.isdir(dst):
         tmpl = pkg_resources.resource_filename("kvuilder", "data/stylesheet")

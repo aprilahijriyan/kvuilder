@@ -44,7 +44,10 @@ class MainApp(MDApp):
         return screen
 
     def get_main_screen(self):
-        pass
+        from libs.screens.main.view import MainScreen
+
+        screen = MainScreen()
+        return screen
 
     def get_screen(self):
         raise NotImplementedError

@@ -4,9 +4,11 @@ from glob import glob
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from kivy.lang import Builder
+from kivy.utils import platform
 from kivymd.app import MDApp
 
 class MainApp(MDApp):
+    platform = "mobile" if platform in ("android", "ios") else "desktop"
     def __init__(self, **kwds):
         super().__init__(**kwds)
         Window.bind(
@@ -16,7 +18,7 @@ class MainApp(MDApp):
         self.screen_manager = ScreenManager()
 
     def get_stylesheets(self):
-        path = os.path.join("libs", "stylesheet", "**/*.kv")
+        path = os.path.join("libs", "stylesheet", self.platform, "**/*.kv")
         stylesheets = glob(path)
         return stylesheets
 

@@ -28,7 +28,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Desktop Environment",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries"

@@ -1,0 +1,17 @@
+<MainScreen>:
+    name: 'main'
+    
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDToolbar:
+            id: action_bar
+            left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
+
+        ScreenManager:
+            id: manager
+            size_hint_y: None
+            height: root.height - action_bar.height
+
+        MDNavigationDrawer:
+            id: nav_drawer

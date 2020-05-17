@@ -1,0 +1,18 @@
+<WizardScreen>:
+    name: 'wizard'
+    
+    MDBoxLayout:
+        padding: dp(10)
+        orientation: "vertical"
+        
+        canvas:
+            Color:
+                rgba: 0, 0, 0, .2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        MDSwiperManager:
+            id: wizard_manager
+            
+            # Wizard screen mu letakan disini...

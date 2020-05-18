@@ -62,7 +62,7 @@ def create_screen(name):
         t_view = string.Template(fp.read())
         view_data = t_view.safe_substitute(nama_screen=name.capitalize())
 
-    with open(view_py, "w") fp:
+    with open(view_py, "w") as fp:
         fp.write(view_data)
 
     dst = os.path.join("libs", "stylesheet", name)

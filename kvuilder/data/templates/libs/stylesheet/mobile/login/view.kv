@@ -10,32 +10,37 @@
     MDBoxLayout:
         orientation: 'vertical'
 
-        MDCard:
-            orientation: "vertical"
-            padding: "8dp"
-            size_hint: None, None
-            size: "280dp", "180dp"
-            pos_hint: {"center_x": .5, "center_y": .5}
-    
-            MDLabel:
-                text: "Log In"
-                size_hint_y: None
-                height: self.texture_size[1]
-                halign: "center"
-    
-            Widget:
-                size_hint_y: None
-                height: "100dp"
+        AnchorLayout:
+            anchor_x: "center"
             
-            MDTextField:
-                hint_text: "Email or username"
-                mode: 'rectangle'
-    
-            MDTextField:
-                hint_text: "Password"
-                mode: 'rectangle'
-                password: True
-    
-            MDRoundFlatButton:
-                text: 'Log In'
-                pos_hint: {"center_x": .5}
+            MDCard:
+                orientation: "vertical"
+                padding: "25dp"
+                spacing: "15dp"
+                size_hint: None, None
+                size: "380dp", "280dp"
+        
+                MDLabel:
+                    text: "Log In"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: "center"
+        
+                # Widget:
+                #     size_hint_y: None
+                #     height: "100dp"
+                
+                MDTextField:
+                    hint_text: "Email or username"
+                    mode: 'rectangle'
+        
+                MDTextField:
+                    hint_text: "Password"
+                    mode: 'rectangle'
+                    password: True
+
+                AnchorLayout:
+                    anchor_x: "center"
+                    
+                    MDRoundFlatButton:
+                        text: 'Log In'

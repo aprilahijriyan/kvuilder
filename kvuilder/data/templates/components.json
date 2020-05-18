@@ -1,6 +1,6 @@
 {
-    /* Module: List[Component...] */
-    "libs.components.wizard": [
+    // Module: List[Component...]
+    'libs.components.wizard': [
         "ThreeLineAvatarIconListItem",
         "MDSwiperManager",
         "MDSwiperPagination"

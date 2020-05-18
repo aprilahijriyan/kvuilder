@@ -1,2 +1,2 @@
-pkg_resources
+setuptools
 click

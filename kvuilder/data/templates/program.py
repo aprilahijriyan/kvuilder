@@ -4,11 +4,10 @@ from glob import glob
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivy.utils import platform
+from kivy.utils import platform as _os
 from kivymd.app import MDApp
 
 class MainApp(MDApp):
-    platform = "mobile" if platform in ("android", "ios") else "desktop"
     def __init__(self, **kwds):
         super().__init__(**kwds)
         Window.bind(
@@ -16,6 +15,11 @@ class MainApp(MDApp):
         )
         Window.softinput_mode = 'below_target'
         self.screen_manager = ScreenManager()
+
+    @property
+    def platform(self):
+        rv = "mobile" if _os in ("android", "ios") else "desktop"
+        return rv
 
     def get_stylesheets(self):
         path = os.path.join("libs", "stylesheet", self.platform, "**/*.kv")
@@ -55,6 +59,7 @@ class MainApp(MDApp):
         raise NotImplementedError
 
     def build(self):
+        self.load_stylesheets()
         screen = self.get_screen()
         self.screen_manager.add_widget(screen)
         return self.screen_manager

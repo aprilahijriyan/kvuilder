@@ -292,6 +292,7 @@ class MDSwiperManager(ScreenManager):
         next_btn = root.next_btn
         if self.index_screen == 0:
             prev_btn.disabled = True
+            next_btn.disabled = False
         elif self.index_screen == len(self.screen_names) - 1:
             next_btn.disabled = True
             prev_btn.disabled = False

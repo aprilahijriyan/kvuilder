@@ -1,3 +1,20 @@
+<Base@Screen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDLabel:
+            text: "Screen (%s)" % root.name
+            halign: "center"
+
+<One@Base>:
+    name: "one"
+
+<Two@Base>:
+    name: "two"
+
+<Three@Base>:
+    name: "three"
+
 <WizardScreen>:
     name: 'wizard'
     
@@ -16,3 +33,6 @@
             id: wizard_manager
             
             # Wizard screen mu letakan disini...
+            One:
+            Two:
+            Three:

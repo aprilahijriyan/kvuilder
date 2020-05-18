@@ -1,4 +1,45 @@
+#:import SingleIconItem libs.components.lists.SingleIconItem
+
 <NavDrawer>:
     orientation: 'vertical'
     
+    MDBoxLayout:
+        id: box_avatar
+        orientation: 'vertical'
+        padding: dp(10)
+        size_hint_y: .2
+
+        Image:
+            id: navigation_image
+            source: 'assets/images/logo.png'
+
+    MDLabel:
+        text: 'Your Name'
+        halign: 'center'
     
+    AnchorLayout:
+        anchor_x: 'center'
+        
+        MDChip:
+            label: 'active'
+
+    MDSeparator:
+        height: '5dp'
+
+    ScrollView:
+        id: scroll
+        size_hint_y: .7
+        canvas.before:
+            Color:
+                rgba: .2,.2,.2,.2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        GridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: dp(10)
+
+            # Items

@@ -6,8 +6,6 @@
     MDBoxLayout:
         id: box_avatar
         orientation: 'vertical'
-        padding: dp(10)
-        size_hint_y: .2
 
         Image:
             id: profile_img
@@ -15,6 +13,8 @@
 
     MDLabel:
         text: 'Your Name'
+        size_hint_y: None
+        height: self.texture_size[1]
         halign: 'center'
     
     AnchorLayout:
@@ -22,13 +22,15 @@
         
         MDChip:
             label: 'active'
+            size_hint: None, None
 
     MDSeparator:
+        size_hint_y: None
         height: '5dp'
 
     ScrollView:
         id: scroll
-        size_hint_y: .7
+        size_hint_y: 1
         canvas.before:
             Color:
                 rgba: .2,.2,.2,.2

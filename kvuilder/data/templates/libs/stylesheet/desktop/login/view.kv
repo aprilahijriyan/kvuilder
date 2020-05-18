@@ -24,23 +24,29 @@
                     text: "Log In"
                     size_hint_y: None
                     height: self.texture_size[1]
+                    font_style: "H5"
                     halign: "center"
-        
-                # Widget:
-                #     size_hint_y: None
-                #     height: "100dp"
                 
-                MDTextField:
-                    hint_text: "Email or username"
-                    mode: 'rectangle'
-        
-                MDTextField:
-                    hint_text: "Password"
-                    mode: 'rectangle'
-                    password: True
+                MDBoxLayout:
+                    orientation: "vertical"
+                    padding: "15dp"
+                    spacing: "10dp"
 
-                AnchorLayout:
-                    anchor_x: "center"
-                    
-                    MDRoundFlatButton:
-                        text: 'Log In'
+                    MDTextField:
+                        hint_text: "Email or username"
+                        mode: 'rectangle'
+            
+                    MDTextField:
+                        hint_text: "Password"
+                        mode: 'rectangle'
+                        password: True
+
+                MDFillRoundFlatButton:
+                    canvas.before:
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [5]
+
+                    size_hint: 1, None
+                    text: 'Log In'

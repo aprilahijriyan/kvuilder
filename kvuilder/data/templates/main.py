@@ -2,6 +2,9 @@ import os
 import sys
 import traceback
 
+if not hasattr(sys, "_MEIPASS"):
+    sys.dont_write_bytecode = True
+
 from libs.core.setup import init
 
 init()
@@ -13,6 +16,7 @@ try:
     from kivy.config import Config
     Config.set('kivy', 'keyboard_mode', 'system')
     Config.set('kivy', 'exit_on_escape', "0")
+    Config.set('graphics', 'multisamples', '0')
     Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 except Exception:

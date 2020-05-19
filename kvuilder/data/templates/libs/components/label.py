@@ -1,11 +1,11 @@
 from kivy.uix.scrollview import ScrollView
-from kivy.uix.label import Label
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty, ObjectProperty
+from kivymd.uix.label import MDLabel
 
 Builder.load_string('''
 <ScrollableLabel>:
-    Label:
+    MDLabel:
         size_hint_y: None
         height: self.texture_size[1]
         text_size: self.width, None
@@ -14,3 +14,14 @@ Builder.load_string('''
 
 class ScrollableLabel(ScrollView):
     text = StringProperty('')
+
+class ClickableLabel(MDLabel):
+    clickable = BooleanProperty(True)
+    callback = ObjectProperty()
+
+    def on_touch_down(self, touch):
+        if self.clickable and touch.is_double_tap:
+            if callable(self.callback):
+                self.callback()
+        return super().on_touch_down(touch)
+

@@ -5,6 +5,7 @@
         "MDSwiperPagination"
     ],
     "libs.components.label": [
-        "ScrollableLabel"
+        "ScrollableLabel",
+        "ClickableLabel"
     ]
 }

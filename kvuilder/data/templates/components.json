@@ -3,5 +3,8 @@
         "ThreeLineAvatarIconListItem",
         "MDSwiperManager",
         "MDSwiperPagination"
+    ],
+    "libs.components.label": [
+        "ScrollableLabel"
     ]
 }

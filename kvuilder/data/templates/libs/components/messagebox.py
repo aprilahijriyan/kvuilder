@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy.clock import Clock
 from kivy.properties import StringProperty
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.gridlayout import MDGridLayout
@@ -69,6 +70,7 @@ class Message(MDDialog):
             kwargs["content_cls"] = content
 
         super().__init__(**kwargs)
+        # Clock.schedule_once(lambda x: self.open(), 2.5)
 
 class InfoMessage(Message):
     def __init__(self, **kwargs):

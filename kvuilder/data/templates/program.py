@@ -56,7 +56,8 @@ class MainApp(MDApp):
         return screen
 
     def get_screen(self):
-        raise NotImplementedError
+        screen = self.get_main_screen()
+        return screen
 
     def build(self):
         self.load_stylesheets()

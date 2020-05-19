@@ -249,6 +249,7 @@ class MDSwiperPagination(ThemableBehavior, BoxLayout):
 
 
 class MDSwiperManager(ScreenManager):
+    enabled_swipe = True
     swipe = False
     index_screen = NumericProperty(0)
     paginator = ObjectProperty()
@@ -267,7 +268,7 @@ class MDSwiperManager(ScreenManager):
         self.transition.screen_in.pos = self.pos
         self.transition.screen_out.pos = self.pos
         super(SlideTransition, self.transition).on_complete()
-        # self.swipe = False
+        self.swipe = False
 
     def switch_screen(self, direction):
         if direction == "right":
@@ -301,7 +302,7 @@ class MDSwiperManager(ScreenManager):
             prev_btn.disabled = False
 
     def on_touch_move(self, touch):
-        if self.collide_point(*touch.pos) and self.swipe:
+        if self.enabled_swipe and self.collide_point(*touch.pos) and not self.swipe:
             # When the Navigation panel is open and
             # the list of its menu is scrolled,
             # the event is also processed on the cards
@@ -312,14 +313,21 @@ class MDSwiperManager(ScreenManager):
             if touch.x < Window.width - 10:
                 if self._x > touch.x:
                     direction = "left"
+                    if self.index_screen == len(self.screen_names) - 1:
+                        print("can't switch right... index max")
+                        return super().on_touch_move(touch)
                 else:
                     direction = "right"
-                # self.swipe = True
+                    if self.index_screen == 0:
+                        print("can't switch left... index 0")
+                        return super().on_touch_move(touch)
+
+                self.swipe = True
                 self.switch_screen(direction)
                 self._x = 0
         return super().on_touch_move(touch)
 
     def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
+        if self.enabled_swipe and self.collide_point(*touch.pos):
             self._x = touch.x
         return super().on_touch_down(touch)

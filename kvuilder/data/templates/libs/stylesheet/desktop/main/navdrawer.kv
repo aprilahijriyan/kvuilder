@@ -2,46 +2,62 @@
 
 <NavDrawer>:
     orientation: 'vertical'
-    
-    MDBoxLayout:
-        id: box_avatar
-        orientation: 'vertical'
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        id: avatar_box
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
 
         Image:
-            id: profile_img
-            source: 'assets/images/logo.png'
-
-    MDLabel:
-        text: 'Your Name'
-        size_hint_y: None
-        height: self.texture_size[1]
-        halign: 'center'
-    
-    AnchorLayout:
-        anchor_x: 'center'
-        
-        MDChip:
-            label: 'active'
+            id: avatar
             size_hint: None, None
+            size: "100dp", "100dp"
+            source: 'assets/images/user.png'
+            allow_stretch: True
+
+    MDGridLayout:
+        adaptive_height: True
+        cols: 2
+
+        MDGridLayout:
+            adaptive_height: True
+            cols: 1
+
+            MDLabel:
+                text: 'Aprila Hijriyan'
+                size_hint_y: None
+                height: self.texture_size[1] + 10
+
+            MDLabel:
+                text: 'hijriyan23@gmail.com'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        MDIconButton:
+            icon: "settings-box"
 
     MDSeparator:
         size_hint_y: None
         height: '5dp'
 
     ScrollView:
-        id: scroll
-        size_hint_y: 1
-        canvas.before:
-            Color:
-                rgba: .2,.2,.2,.2
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        MDList:
+            id: items
 
-        GridLayout:
-            cols: 1
-            size_hint_y: None
-            height: self.minimum_height
-            spacing: dp(10)
-
-            # Items
+            SingleIconItem:
+                icon: 'comment-question-outline'
+                text: "Pusat Bantuan"
+                events_callback: lambda x: 1
+            
+            SingleIconItem:
+                icon: 'email-send'
+                text: "Hubungi Kami"
+                events_callback: lambda x: 1
+            
+            SingleIconItem:
+                icon: 'file-multiple-outline'
+                text: "Kebijakan Privasi"
+                events_callback: lambda x: 1

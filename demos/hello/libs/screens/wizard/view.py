@@ -1,4 +1,4 @@
 from kivy.uix.screenmanager import Screen
 
-class LoginScreen(Screen):
+class WizardScreen(Screen):
     pass

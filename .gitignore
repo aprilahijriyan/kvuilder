@@ -2,7 +2,7 @@
 .idea
 .vscode
 icon.py
-demos/
+#demos/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

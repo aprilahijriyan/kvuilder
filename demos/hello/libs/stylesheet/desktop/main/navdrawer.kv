@@ -1,0 +1,65 @@
+#:import SingleIconItem libs.components.lists.SingleIconItem
+
+<NavDrawer>:
+    orientation: 'vertical'
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        id: avatar_box
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "100dp", "100dp"
+            source: 'assets/images/user.png'
+            allow_stretch: True
+
+    MDGridLayout:
+        adaptive_height: True
+        cols: 2
+
+        MDGridLayout:
+            adaptive_height: True
+            cols: 1
+
+            MDLabel:
+                text: 'Aprila Hijriyan'
+                size_hint_y: None
+                height: self.texture_size[1] + 10
+
+            MDLabel:
+                text: 'hijriyan23@gmail.com'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        MDIconButton:
+            id: setting_btn
+            icon: "settings-box"
+            on_release: app.show_menu_settings()
+
+    MDSeparator:
+        size_hint_y: None
+        height: '5dp'
+
+    ScrollView:
+        MDList:
+            id: items
+
+            SingleIconItem:
+                icon: 'comment-question-outline'
+                text: "Pusat Bantuan"
+                events_callback: lambda x: 1
+            
+            SingleIconItem:
+                icon: 'email-send'
+                text: "Hubungi Kami"
+                events_callback: lambda x: 1
+            
+            SingleIconItem:
+                icon: 'file-multiple-outline'
+                text: "Kebijakan Privasi"
+                events_callback: lambda x: 1

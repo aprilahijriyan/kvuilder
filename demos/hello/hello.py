@@ -12,16 +12,19 @@ from kivymd.uix.button import MDFlatButton, MDRaisedButton
 from kivymd.material_resources import DEVICE_TYPE
 
 from libs.components import messagebox
+from libs.core.navigator import NavigatorScreen
 
 class MainApp(MDApp):
     def __init__(self, **kwds):
         super().__init__(**kwds)
         Window.bind(
-            on_request_close=self.on_request_close
+            on_request_close=self.on_request_close,
+            on_keyboard=self.on_keyboard
         )
         Window.softinput_mode = 'below_target'
         self.screen_manager = ScreenManager()
         self.dialog_exit = self.create_dialog_exit()
+        self.navigator = NavigatorScreen(self.screen_manager)
 
     def get_stylesheets(self):
         path = os.path.join("libs", "stylesheet", DEVICE_TYPE, "**/*.kv")
@@ -98,10 +101,8 @@ class MainApp(MDApp):
         current.dismiss()
 
     def create_dialog_exit(self):
-        btn_kembali = MDRaisedButton(text="Kembali")
-        btn_kembali.bind(on_release=self.handle_action_exit_button)
-        btn_ya = MDFlatButton(text="Ya")
-        btn_ya.bind(on_release=self.handle_action_exit_button)
+        btn_kembali = MDRaisedButton(text="Kembali", on_release=self.handle_action_exit_button)
+        btn_ya = MDFlatButton(text="Ya", on_release=self.handle_action_exit_button)
         dialog = messagebox.InfoMessage(
             auto_dismiss=False,
             title="Info",
@@ -116,10 +117,14 @@ class MainApp(MDApp):
     def handle_action_exit_button(self, *args):
         txt = args[0].text
         if txt == 'Ya':
-            self.stop()
+            Clock.schedule_once(lambda x: self.stop(), 0)
         else:
-            self.dialog_exit.dismiss()
+            Clock.schedule_once(lambda x: self.dialog_exit.dismiss(), 0)
+
+    def on_keyboard(self, instance, keyboard, keycode, text, modifiers):
+        print(keyboard, keycode, text, modifiers)
+        return True
 
     def on_request_close(self, *args):
-        self.dialog_exit.open()
+        Clock.schedule_once(lambda x: self.dialog_exit.open(), 0)
         return True

@@ -98,11 +98,12 @@ class MainApp(MDApp):
         current.dismiss()
 
     def create_dialog_exit(self):
-        btn_kembali = MDFlatButton(text="Kembali")
+        btn_kembali = MDRaisedButton(text="Kembali")
         btn_kembali.bind(on_release=self.handle_action_exit_button)
-        btn_ya = MDRaisedButton(text="Ya")
+        btn_ya = MDFlatButton(text="Ya")
         btn_ya.bind(on_release=self.handle_action_exit_button)
         dialog = messagebox.InfoMessage(
+            auto_dismiss=False,
             title="Info",
             text="Apakah anda yakin ingin keluar?",
             buttons=[
@@ -113,7 +114,11 @@ class MainApp(MDApp):
         return dialog
 
     def handle_action_exit_button(self, *args):
-        print("Button args:", args)
+        txt = args[0].text
+        if txt == 'Ya':
+            self.stop()
+        else:
+            self.dialog_exit.dismiss()
 
     def on_request_close(self, *args):
         self.dialog_exit.open()

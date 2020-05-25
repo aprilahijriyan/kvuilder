@@ -37,7 +37,9 @@
                 height: self.texture_size[1]
 
         MDIconButton:
+            id: setting_btn
             icon: "settings-box"
+            on_release: app.show_menu_settings()
 
     MDSeparator:
         size_hint_y: None

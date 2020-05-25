@@ -5,14 +5,12 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.clock import Clock
-from kivy.utils import platform as _os
 from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDFlatButton, MDRaisedButton
 from kivymd.material_resources import DEVICE_TYPE
 
 from libs.components import messagebox
-from libs.core.navigator import NavigatorScreen
 
 class MainApp(MDApp):
     def __init__(self, **kwds):
@@ -24,7 +22,6 @@ class MainApp(MDApp):
         Window.softinput_mode = 'below_target'
         self.screen_manager = ScreenManager()
         self.dialog_exit = self.create_dialog_exit()
-        self.navigator = NavigatorScreen(self.screen_manager)
 
     def get_stylesheets(self):
         path = os.path.join("libs", "stylesheet", DEVICE_TYPE, "**/*.kv")
@@ -123,7 +120,13 @@ class MainApp(MDApp):
 
     def on_keyboard(self, instance, keyboard, keycode, text, modifiers):
         print(keyboard, keycode, text, modifiers)
+        if keyboard in (1001, 27):
+            self.back_screen(keyboard)
         return True
+
+    def back_screen(self, event):
+        if event in (1001, 27):
+            self.on_request_close()
 
     def on_request_close(self, *args):
         Clock.schedule_once(lambda x: self.dialog_exit.open(), 0)

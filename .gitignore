@@ -1,4 +1,5 @@
 .spyproject
+.buildozer
 .idea
 .vscode
 icon.py

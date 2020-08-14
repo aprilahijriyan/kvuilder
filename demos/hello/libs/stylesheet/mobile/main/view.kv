@@ -3,11 +3,11 @@
 <MainScreen>:
     name: 'main'
     
-    MDBoxLayout:
-        orientation: 'vertical'
+    NavigationLayout:
         
         MDToolbar:
             id: action_bar
+            pos_hint: {"top": 1}
             left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
 
         ScreenManager:
@@ -19,3 +19,4 @@
             id: nav_drawer
 
             NavDrawer:
+                id: nav_content

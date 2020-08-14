@@ -2,6 +2,7 @@
 .buildozer
 .idea
 .vscode
+bin/
 icon.py
 #demos/
 # Byte-compiled / optimized / DLL files

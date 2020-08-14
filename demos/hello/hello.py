@@ -59,7 +59,7 @@ class MainApp(MDApp):
         return screen
 
     def get_screen(self):
-        screen = self.get_wizard_screen()
+        screen = self.get_main_screen()
         return screen
 
     def build(self):

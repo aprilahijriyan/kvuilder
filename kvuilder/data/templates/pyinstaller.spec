@@ -16,6 +16,7 @@ from kivymd import hooks_path as kivymd_hooks_path
 
 hiddenimports = ["pkg_resources.py2_warn"]
 
+icon = os.path.join("assets", "images", "icon.ico")
 debug = True
 
 datas = [
@@ -48,7 +49,7 @@ exe = EXE(
     debug=debug,
     strip=False,
     upx=False,
-    name="${project_name}",
+    name="${nama_program}",
     console=debug,
-    icon="assets\\images\\icon.ico"
+    icon=icon
 )

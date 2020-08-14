@@ -34,6 +34,16 @@ def create_project(name):
 
     program_py = os.path.join(name, "program.py")
     os.rename(program_py, os.path.join(name, name + ".py"))
+    
+    pyi_file = os.path.join(name, "pyinstaller.spec")
+    with open(pyi_file) as fp:
+        data_tmp = string.Template(fp.read())
+        data = data_tmp.safe_substitute(nama_program=name)
+    
+    with open(pyi_file, "w") as fp:
+        fp.write(data)
+
+    os.rename(pyi_file, os.path.join(name, name + ".spec"))
     click.echo("Project %r berhasil dibuat!" % name)
 
 @project_group.group("screen")

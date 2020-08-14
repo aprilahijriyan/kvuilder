@@ -3,9 +3,12 @@ from setuptools import setup
 with open("requirements.txt") as fp:
     install_requires = fp.read().splitlines() 
 
+with open("README.md") as fp:
+    LONG_DESCRIPTION = fp.read()
+
 setup(
     name="kvuilder",
-    version="1.0.0",
+    version="1.0.1",
     license="MIT",
     platforms="any",
     packages=["kvuilder"],
@@ -17,7 +20,9 @@ setup(
     author_email="hijriyan23@gmail.com",
     url="https://github.com/aprilahijriyan/kvuilder",
     description="Kivy Project Template Builder",
+    long_description=LONG_DESCRIPTION,
     install_requires=install_requires,
+    long_description_content_type='text/markdown',
     entry_points={
         "console_scripts": [
             "kvuilder=kvuilder.command:project_group"

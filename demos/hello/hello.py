@@ -12,6 +12,7 @@ from kivymd.material_resources import DEVICE_TYPE
 
 from libs.components import messagebox
 
+
 class MainApp(MDApp):
     def __init__(self, **kwds):
         super().__init__(**kwds)
@@ -35,7 +36,7 @@ class MainApp(MDApp):
     def get_wizard_screen(self):
         from libs.screens.wizard.view import WizardScreen
         from libs.components.wizard import MDSwiperPagination
-        
+
         screen = WizardScreen()
         wizard_manager = screen.ids.wizard_manager
         paginator = MDSwiperPagination()
@@ -58,7 +59,7 @@ class MainApp(MDApp):
         return screen
 
     def get_screen(self):
-        screen = self.get_login_screen()
+        screen = self.get_wizard_screen()
         return screen
 
     def build(self):

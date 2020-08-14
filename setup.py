@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open("requirements.txt") as fp:
+    install_requires = fp.read().splitlines() 
+
 setup(
     name="kvuilder",
     version="1.0.0",
@@ -14,6 +17,7 @@ setup(
     author_email="hijriyan23@gmail.com",
     url="https://github.com/aprilahijriyan/kvuilder",
     description="Kivy Project Template Builder",
+    install_requires=install_requires,
     entry_points={
         "console_scripts": [
             "kvuilder=kvuilder.command:project_group"
@@ -32,5 +36,7 @@ setup(
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries"
     ],
+    zip_safe=False,
+    python_requires='>=3.6',
     keywords="kivy kivymd gui android ios desktop application",
 )

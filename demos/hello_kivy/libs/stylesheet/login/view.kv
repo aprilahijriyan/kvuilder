@@ -1,0 +1,54 @@
+<LoginScreen>:
+    name: 'login'
+    
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/images/abstract/1.jpg"
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        AnchorLayout:
+            anchor_x: "center"
+            
+            MDCard:
+                orientation: "vertical"
+                padding: "25dp"
+                spacing: "15dp"
+                size_hint: None, None
+                size: "380dp", "280dp"
+        
+                MDLabel:
+                    text: "Log In"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    font_style: "H5"
+                    halign: "center"
+                
+                MDBoxLayout:
+                    orientation: "vertical"
+                    padding: "15dp"
+                    spacing: "10dp"
+
+                    MDTextField:
+                        id: email
+                        hint_text: "Email or username"
+                        mode: 'rectangle'
+            
+                    MDTextField:
+                        id: passw
+                        hint_text: "Password"
+                        mode: 'rectangle'
+                        password: True
+
+                MDFillRoundFlatButton:
+                    canvas.before:
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [5]
+
+                    size_hint: 1, None
+                    text: 'Log In'

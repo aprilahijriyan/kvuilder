@@ -29,7 +29,7 @@ def main():
     
     app = None
     try:
-        from ${nama_program} import MainApp
+        from hello_kivy import MainApp
         app = MainApp()
         app.run()
 

@@ -1,0 +1,22 @@
+#:import NavDrawer libs.screens.main.navdrawer.NavDrawer
+
+<MainScreen>:
+    name: 'main'
+    
+    NavigationLayout:
+        
+        MDToolbar:
+            id: action_bar
+            pos_hint: {"top": 1}
+            left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
+
+        ScreenManager:
+            id: manager
+            size_hint_y: None
+            height: root.height - action_bar.height
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            NavDrawer:
+                id: nav_content

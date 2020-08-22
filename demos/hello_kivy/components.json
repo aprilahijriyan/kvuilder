@@ -1,0 +1,11 @@
+{
+    "libs.components.wizard": [
+        "ThreeLineAvatarIconListItem",
+        "MDSwiperManager",
+        "MDSwiperPagination"
+    ],
+    "libs.components.label": [
+        "ScrollableLabel",
+        "ClickableLabel"
+    ]
+}

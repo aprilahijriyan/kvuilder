@@ -1,6 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 from PyInstaller.building.build_main import *
+from kivy import platform
 import sys
 import os
 
@@ -8,7 +9,7 @@ path = os.path.abspath(".")
 sys.path.insert(0, path)
 
 bins = []
-if sys.platform.startswith("win"):
+if platform == "win":
     from kivy_deps import sdl2, angle
     bins = [Tree(p) for p in (sdl2.dep_bins + angle.dep_bins)]
 
@@ -17,11 +18,12 @@ from kivymd import hooks_path as kivymd_hooks_path
 hiddenimports = ["pkg_resources.py2_warn"]
 
 icon = os.path.join("assets", "images", "icon.ico")
+stylesheet = os.path.join("libs", "stylesheet")
 debug = True
 
 datas = [
     ("assets", "assets"),
-    ("libs", "libs"),
+    (stylesheet, stylesheet),
     ("components.json", ".")
 ]
 a = Analysis(

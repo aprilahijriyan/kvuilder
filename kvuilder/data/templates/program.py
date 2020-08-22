@@ -8,7 +8,6 @@ from kivy.clock import Clock
 from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDFlatButton, MDRaisedButton
-from kivymd.material_resources import DEVICE_TYPE
 
 from libs.components import messagebox
 
@@ -25,8 +24,8 @@ class MainApp(MDApp):
         self.dialog_exit = self.create_dialog_exit()
 
     def get_stylesheets(self):
-        path = os.path.join("libs", "stylesheet", DEVICE_TYPE, "**/*.kv")
-        stylesheets = glob(path)
+        path = os.path.join("libs", "stylesheet", "**/*.kv")
+        stylesheets = glob(path, recursive=True)
         return stylesheets
 
     def load_stylesheets(self):
@@ -120,7 +119,7 @@ class MainApp(MDApp):
             Clock.schedule_once(lambda x: self.dialog_exit.dismiss(), 0)
 
     def on_keyboard(self, instance, keyboard, keycode, text, modifiers):
-        print(keyboard, keycode, text, modifiers)
+        # print(keyboard, keycode, text, modifiers)
         if keyboard in (1001, 27):
             self.back_screen(keyboard)
         return True

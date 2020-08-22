@@ -36,7 +36,7 @@ def main():
         app.run()
 
     except Exception:
-        traceback.print_exc()
+        print(traceback.format_exc())
         if app is not None:
             app.stop()
 
